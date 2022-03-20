@@ -2,7 +2,12 @@ import { Avatar } from "@material-ui/core";
 import React, { useState } from "react";
 import { GoogleLogout } from "react-google-login";
 import { useDispatch, useSelector } from "react-redux";
-import { selectIsSignedIn, selectUserData } from "../features/userSlice";
+import {
+  selectIsSignedIn,
+  selectUserData,
+  setBlogData,
+  setSearchInput,
+} from "../features/userSlice";
 import { setIsSignedIn, setUserData } from "../features/userSlice";
 import "../styling/Navbar.css";
 
@@ -18,7 +23,10 @@ const Navbar = () => {
     dispatch(setUserData(null));
   };
 
-  const handleClick = () => {};
+  const handleClick = (e) => {
+    e.preventDefault();
+    dispatch(setSearchInput(inputValue));
+  };
 
   return (
     <div className="navbar">
